@@ -1,5 +1,5 @@
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap&subset=cyrillic');
 
   :root{
     --ink:#1E2421;
@@ -11,53 +11,59 @@
     --dusk:#2B4257;
     --safety:#E2A93B;
     --line:rgba(30,36,33,0.14);
+    --ok:#3F6B4E;
   }
   *{box-sizing:border-box;}
-  .uts-app{font-family:'Inter',sans-serif; color:var(--ink); background:var(--paper); min-height:100%; padding:0 0 40px; line-height:1.45;}
-  .uts-app input, .uts-app button{font-family:inherit;}
+  .uts-app{font-family:'Inter','Noto Sans',sans-serif; color:var(--ink); background:var(--paper); min-height:100%; padding:0 0 40px; line-height:1.45;}
+  .uts-app input, .uts-app select, .uts-app button{font-family:inherit;}
   .uts-mono{font-family:'IBM Plex Mono',monospace;}
 
-  .uts-header{background:var(--steel-dark); color:var(--paper); padding:18px 22px; display:flex; align-items:center; gap:12px;}
+  .uts-header{background:var(--steel-dark); color:var(--paper); padding:18px 22px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
   .uts-mark{width:32px; height:32px; border-radius:4px; overflow:hidden; flex-shrink:0; border:1px solid rgba(247,243,234,.25);}
   .uts-mark div{height:33.3%;}
-  .uts-brand-text .t1{font-family:'Oswald',sans-serif; font-size:16px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;}
+  .uts-brand-text .t1{font-family:'Oswald','Noto Sans',sans-serif; font-size:16px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;}
   .uts-brand-text .t2{font-size:11px; opacity:.65; font-family:'IBM Plex Mono',monospace;}
 
-  .uts-body{max-width:520px; margin:0 auto; padding:28px 20px 0;}
+  .uts-body{max-width:980px; margin:0 auto; padding:24px 20px 0;}
 
-  .uts-card{background:#fff; border:1px solid var(--line); border-radius:6px; padding:22px; margin-bottom:18px;}
+  .uts-tabs{display:flex; gap:6px; margin-bottom:20px; flex-wrap:wrap; border-bottom:1px solid var(--line);}
+  .uts-tab{background:transparent; border:none; padding:10px 16px; cursor:pointer; font-size:13.5px; font-weight:600; color:var(--steel); border-bottom:2.5px solid transparent; font-family:'Oswald',sans-serif; letter-spacing:.03em; text-transform:uppercase;}
+  .uts-tab.active{color:var(--ink); border-bottom-color:var(--ore);}
+
+  .uts-card{background:#fff; border:1px solid var(--line); border-radius:6px; padding:20px; margin-bottom:18px;}
   .uts-card h3{margin:0 0 14px; font-size:15px; font-family:'Oswald',sans-serif; text-transform:uppercase; letter-spacing:.03em;}
   .uts-row{display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end;}
-  .uts-field{display:flex; flex-direction:column; gap:5px; flex:1;}
+  .uts-field{display:flex; flex-direction:column; gap:5px;}
   .uts-field label{font-size:11.5px; color:var(--steel); text-transform:uppercase; letter-spacing:.04em; font-weight:600;}
-  .uts-field input{border:1px solid var(--line); border-radius:4px; padding:9px 10px; font-size:14px; background:var(--paper); width:100%;}
+  .uts-field input, .uts-field select{border:1px solid var(--line); border-radius:4px; padding:9px 10px; font-size:14px; background:var(--paper); min-width:140px;}
   .uts-btn{background:var(--ore); color:#fff; border:none; padding:10px 18px; border-radius:4px; cursor:pointer; font-weight:600; font-size:13.5px; font-family:'Oswald',sans-serif; letter-spacing:.03em; text-transform:uppercase;}
   .uts-btn:hover{opacity:.88;}
+  .uts-btn.secondary{background:var(--steel);}
   .uts-btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--line);}
-  .uts-btn:disabled{opacity:.4; cursor:not-allowed;}
 
-  .uts-id-card-head{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px;}
-  .uts-id-card-head .name{font-family:'Oswald',sans-serif; font-size:20px; font-weight:600;}
-  .uts-id-card-head .pos{color:var(--steel); font-size:13.5px;}
-  .uts-id-card-head .month-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; background:var(--paper-dim); padding:4px 9px; border-radius:20px; color:var(--steel);}
+  table.uts-table{width:100%; border-collapse:collapse; font-size:13px;}
+  table.uts-table th, table.uts-table td{padding:8px 9px; border-bottom:1px solid var(--line); text-align:left;}
+  table.uts-table th{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:var(--steel); background:var(--paper-dim);}
+  .uts-table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:6px;}
 
-  .uts-stat-list{margin-top:14px; border-top:1px solid var(--line);}
-  .uts-stat-row{display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--line); font-size:14px;}
-  .uts-stat-row .l{color:var(--steel);}
-  .uts-stat-row .v{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:15px;}
+  .uts-badge{font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; font-family:'IBM Plex Mono',monospace;}
+  .uts-badge.ok{background:#e2efe5; color:var(--ok);}
+  .uts-badge.pending{background:#fbeede; color:var(--ore);}
+  .uts-badge.empty{background:#eee; color:#888;}
 
-  .uts-empty{text-align:center; padding:30px 20px; color:var(--steel);}
+  .uts-summary-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px; margin:14px 0;}
+  .uts-stat{background:var(--paper-dim); border-radius:5px; padding:12px; text-align:center;}
+  .uts-stat .v{font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:600;}
+  .uts-stat .l{font-size:10.5px; color:var(--steel); text-transform:uppercase; letter-spacing:.03em; margin-top:3px;}
 
-  .uts-sigpad-wrap{border:1.5px dashed var(--line); border-radius:6px; padding:10px; background:var(--paper-dim);}
-  canvas.uts-sigpad{background:#fff; border-radius:4px; touch-action:none; width:100%; height:150px; display:block;}
-  .uts-sig-actions{display:flex; justify-content:space-between; margin-top:8px; align-items:center;}
+  .uts-empty{text-align:center; padding:34px 20px; color:var(--steel);}
+  .uts-note{font-size:12.5px; color:var(--steel); background:var(--paper-dim); border-radius:5px; padding:10px 12px; margin-top:14px;}
+  .uts-footer-note{max-width:980px; margin:26px auto 0; padding:0 20px; font-size:11.5px; color:var(--steel); text-align:center;}
 
-  .uts-stamp-zone{display:flex; align-items:center; gap:20px; flex-wrap:wrap; padding:6px 4px;}
-  .uts-stamp{width:108px; height:108px; border-radius:50%; border:3px double var(--ore); color:var(--ore); display:flex; align-items:center; justify-content:center; text-align:center; transform:rotate(-9deg); mix-blend-mode:multiply; opacity:.85; flex-shrink:0; animation:uts-stamp-in .42s cubic-bezier(.2,.9,.3,1.2);}
-  .uts-stamp b{font-family:'Oswald',sans-serif; font-size:12px; letter-spacing:.05em; display:block;}
-  @keyframes uts-stamp-in{0%{transform:rotate(-9deg) scale(1.5); opacity:0;} 100%{transform:rotate(-9deg) scale(1); opacity:.85;}}
-
-  .uts-footer-note{max-width:520px; margin:26px auto 0; padding:0 20px; font-size:11.5px; color:var(--steel); text-align:center;}
+  @media (max-width:640px){
+    .uts-row{flex-direction:column; align-items:stretch;}
+    .uts-field input,.uts-field select{min-width:0; width:100%;}
+  }
 </style>
 
 <div class="uts-app" id="uts-root"></div>
@@ -65,15 +71,15 @@
 <script>
 (function(){
   const root = document.getElementById('uts-root');
-  let sigCtx=null, sigDrawing=false, sigHas=false;
 
   let STATE = {
-    id: '',
-    month: currentMonthStr(),
-    looked: false,
-    employee: null,
-    record: null,
-    checked: false,
+    tab: 'employees',
+    employees: [],
+    editingId: null,
+    entryEmpId: '',
+    entryMonth: currentMonthStr(),
+    dashMonth: currentMonthStr(),
+    dashData: null,
   };
 
   // Replace this placeholder with your deployed Google Apps Script Web App URL.
@@ -89,7 +95,7 @@
     try{
       const response = await fetch(API_URL, {
         method: 'POST',
-        headers: {'Content-Type':'text/plain;charset=utf-8'}, // CORS preflight-Р°Р°СЃ Р·Р°Р№Р»СЃС…РёР№С…РёР№РЅ С‚СѓР»Рґ text/plain Р°С€РёРіР»Р°РІ
+        headers: {'Content-Type':'text/plain;charset=utf-8'}, // CORS preflight-аас зайлсхийхийн тулд text/plain ашиглав
         body: JSON.stringify({action, ...payload}),
         mode: 'cors',
       });
@@ -114,6 +120,7 @@
     const d = new Date(iso);
     return d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0')+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
   }
+
   async function loadJSON(key, fallback){
     try{
       const r = await window.storage.get(key, true);
@@ -126,201 +133,263 @@
       return !!r;
     }catch(e){ console.error('Storage error', e); return false; }
   }
-
-  async function getEmployeeInfo(id){
-    const employees = await loadJSON('employees', []);
-    let employee = employees.find(e => e.id === id) || null;
+  async function getMonthData(monthStr){
     if(apiUrlEnabled()){
-      const remote = await apiCall('getEmployee', {id});
-      if(remote && remote.success && remote.employee){
-        employee = remote.employee;
+      const remote = await apiCall('loadMonth', {month: monthStr});
+      if(remote && remote.success){
+        return {records: remote.records || {}};
       }
     }
-    return employee;
+    return await loadJSON('month:'+monthStr, {records:{}});
   }
 
-  async function getMonthData(monthStr){
-    return await loadJSON('month:'+monthStr, {records:{}});
+  async function init(){
+    STATE.employees = await loadJSON('employees', []);
+    if(apiUrlEnabled()){
+      const remote = await apiCall('loadEmployees');
+      if(remote && remote.success && Array.isArray(remote.employees)){
+        STATE.employees = remote.employees;
+      }
+    }
+    render();
+  }
+
+  function render(){
+    root.innerHTML = headerView() + '<div class="uts-body">' + tabsView() + tabBody() + '</div>' + footerNote();
   }
 
   function logoMark(){
     return '<div class="uts-mark"><div style="background:var(--safety)"></div><div style="background:var(--dusk)"></div><div style="background:var(--steel)"></div></div>';
   }
   function headerView(){
-    return `<div class="uts-header">${logoMark()}<div class="uts-brand-text"><div class="t1">РЈСѓСЂС…Р°Р№ В· Р¦Р°РіРёР№РЅ С‚РѕРѕС†РѕРѕ</div><div class="t2">РђР¶РёР»С‚РЅС‹ РїРѕСЂС‚Р°Р»</div></div></div>`;
+    return `<div class="uts-header">${logoMark()}<div class="uts-brand-text"><div class="t1">Уурхай · Цагийн тооцоо</div><div class="t2">HR удирдлага</div></div></div>`;
   }
   function footerNote(){
-    return '<div class="uts-footer-note">Р—У©РІС…У©РЅ У©У©СЂРёР№РЅ РєРѕРґРѕРѕСЂ РѕСЂР¶, У©У©СЂРёР№РЅ РјСЌРґСЌСЌР»Р»СЌСЌ С…Р°СЂРґР°Рі Р±РѕР»РЅРѕ. РњСЌРґСЌСЌР»Р»РёР№Рі HR РѕСЂСѓСѓР»РґР°Рі.</div>';
+    return '<div class="uts-footer-note">Энэ файл нь HR-д зориулагдсан. Ажилтнууд "Ажилтны портал" файлаар өөрийн мэдээллээ хардаг бөгөөд хоёр файл нэг өгөгдлийн сан руу бичдэг.</div>';
   }
 
-  function render(){
-    root.innerHTML = headerView() + '<div class="uts-body">' + lookupCard() + resultCard() + '</div>' + footerNote();
-    if(document.getElementById('sig-canvas')) wireSignaturePad();
+  function tabsView(){
+    const tabs = [['employees','Ажилтнууд'],['entry','Сарын мэдээлэл'],['dashboard','Хяналтын самбар']];
+    return '<div class="uts-tabs">' + tabs.map(([k,l])=>
+      `<button class="uts-tab ${STATE.tab===k?'active':''}" onclick="UTS.setTab('${k}')">${l}</button>`
+    ).join('') + '</div>';
+  }
+  function tabBody(){
+    if(STATE.tab==='employees') return employeesView();
+    if(STATE.tab==='entry') return entryView();
+    if(STATE.tab==='dashboard') return dashboardView();
+    return '';
   }
 
-  function lookupCard(){
+  function employeesView(){
+    const editing = STATE.employees.find(e=>e.id===STATE.editingId);
+    const rows = STATE.employees.map(e=>`
+      <tr>
+        <td class="uts-mono">${escapeHtml(e.id)}</td>
+        <td>${escapeHtml(e.name)}</td>
+        <td>${escapeHtml(e.position)}</td>
+        <td>${escapeHtml(e.tenure)}</td>
+        <td style="white-space:nowrap;">
+          <button class="uts-btn ghost" onclick="UTS.editEmployee('${escapeHtml(e.id)}')">Засах</button>
+          <button class="uts-btn ghost" onclick="UTS.removeEmployee('${escapeHtml(e.id)}')">Устгах</button>
+        </td>
+      </tr>`).join('');
     return `
     <div class="uts-card">
-      <h3>УЁУ©СЂРёР№РЅ РјСЌРґСЌСЌР»СЌР» С…Р°СЂР°С…</h3>
+      <h3>${editing ? 'Ажилтны мэдээлэл засах' : 'Ажилтан нэмэх'}</h3>
       <div class="uts-row">
-        <div class="uts-field"><label>РђР¶РёР»С‚РЅС‹ РєРѕРґ</label><input id="portal-id" placeholder="EMP0001" value="${escapeHtml(STATE.id)}"/></div>
-        <div class="uts-field"><label>РЎР°СЂ</label><input type="month" id="portal-month" value="${STATE.month}"/></div>
+        <div class="uts-field"><label>Код</label><input id="emp-id" placeholder="EMP0001" value="${editing?escapeHtml(editing.id):''}" ${editing?'disabled':''}/></div>
+        <div class="uts-field"><label>Нэр</label><input id="emp-name" placeholder="Ганхүү" value="${editing?escapeHtml(editing.name):''}"/></div>
+        <div class="uts-field"><label>Албан тушаал</label><input id="emp-pos" placeholder="Дамп оператор" value="${editing?escapeHtml(editing.position):''}"/></div>
+        <div class="uts-field"><label>Ажилласан хугацаа</label><input id="emp-tenure" placeholder="8 сар" value="${editing?escapeHtml(editing.tenure):''}"/></div>
+        <button class="uts-btn" onclick="UTS.saveEmployee()">${editing?'Хадгалах':'Нэмэх'}</button>
+        ${editing ? '<button class="uts-btn ghost" onclick="UTS.cancelEdit()">Цуцлах</button>' : '<button class="uts-btn secondary" onclick="UTS.seedDemo()">Жишээ ажилтан</button>'}
       </div>
-      <button class="uts-btn" style="margin-top:14px;" onclick="UTS.lookup()">РҐР°СЂР°С…</button>
-    </div>`;
-  }
-
-  function resultCard(){
-    if(!STATE.looked) return '';
-    if(!STATE.record){
-      return `<div class="uts-card"><div class="uts-empty">${escapeHtml(STATE.id)} РєРѕРґС‚РѕР№ Р°Р¶РёР»С‚РЅС‹ ${STATE.month} СЃР°СЂС‹РЅ РјСЌРґСЌСЌР»СЌР» РѕР»РґСЃРѕРЅРіТЇР№. HR-С‚СЌР№ С…РѕР»Р±РѕРіРґРѕРЅРѕ СѓСѓ.</div></div>`;
-    }
-    const e = STATE.employee || {name:'', position:'', tenure:''};
-    const r = STATE.record;
-    let html = `
+    </div>
     <div class="uts-card">
-      <div class="uts-id-card-head">
-        <div>
-          <div class="name">${escapeHtml(e.name)}</div>
-          <div class="pos">${escapeHtml(e.position)}</div>
-        </div>
-        <div class="month-tag">${STATE.month}</div>
-      </div>
-      <div class="uts-stat-list">
-        <div class="uts-stat-row"><span class="l">${monthNum(STATE.month)}-СЂ СЃР°СЂС‹РЅ Р°Р¶РёР»Р»Р°СЃР°РЅ С…РѕРЅРѕРі</span><span class="v">${r.workedDays}</span></div>
-        <div class="uts-stat-row"><span class="l">Р­СЌР»Р¶РёР№РЅ Р°РјСЂР°Р»С‚</span><span class="v">${r.restDays}</span></div>
-        <div class="uts-stat-row"><span class="l">РђР¶РёР»Р»Р°СЃР°РЅ С…СѓРіР°С†Р°Р°</span><span class="v">${escapeHtml(e.tenure)}</span></div>
-      </div>
+      <h3>Ажилтны жагсаалт (${STATE.employees.length})</h3>
+      ${STATE.employees.length===0 ? '<div class="uts-empty">Одоогоор ажилтан бүртгэгдээгүй байна.</div>' : `
+      <div class="uts-table-wrap"><table class="uts-table">
+        <thead><tr><th>Код</th><th>Нэр</th><th>Албан тушаал</th><th>Ажилласан хугацаа</th><th></th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>`}
     </div>`;
-
-    if(r.confirmed){
-      html += `
-      <div class="uts-card">
-        <h3>Р‘Р°С‚Р°Р»РіР°Р°Р¶СѓСѓР»Р°Р»С‚</h3>
-        <div class="uts-stamp-zone">
-          <div class="uts-stamp"><div><b>Р‘РђРўРђР›Р“РђРђР–РЎРђРќ</b><div class="uts-mono" style="font-size:10px;">${fmtDate(r.confirmedAt)}</div></div></div>
-          <div>
-            ${r.signature ? `<img src="${r.signature}" style="max-width:200px; border:1px solid var(--line); border-radius:4px; background:#fff;"/>` : ''}
-            <div style="font-size:12.5px; color:var(--steel); margin-top:6px;">РўР° РґСЌСЌСЂС… РјСЌРґСЌСЌР»СЌР»С‚СЌР№ С‚Р°РЅРёР»С†Р°Р¶, Р±Р°С‚Р°Р»РіР°Р°Р¶СѓСѓР»СЃР°РЅ Р±Р°Р№РЅР°.</div>
-          </div>
-        </div>
-      </div>`;
-    } else {
-      html += `
-      <div class="uts-card">
-        <label style="display:flex; gap:8px; align-items:flex-start; font-size:13.5px; margin-bottom:14px;">
-          <input type="checkbox" id="ack-check" onchange="UTS.toggleAck(this.checked)" style="margin-top:3px;"/>
-          <span>Р”СЌСЌСЂС… РјСЌРґСЌСЌР»СЌР»С‚СЌР№ С‚Р°РЅРёР»С†Р»Р°Р°.</span>
-        </label>
-        <div class="uts-field">
-          <label>Р“Р°СЂС‹РЅ ТЇСЃСЌРі</label>
-          <div class="uts-sigpad-wrap">
-            <canvas id="sig-canvas" class="uts-sigpad"></canvas>
-            <div class="uts-sig-actions">
-              <button class="uts-btn ghost" onclick="UTS.clearSig()">РђСЂРёР»РіР°С…</button>
-              <span class="uts-mono" style="font-size:11px;color:var(--steel);">РҐСѓР»РіР°РЅР°Р°СЂ/С…СѓСЂСѓСѓРіР°Р°СЂР°Р° Р·СѓСЂРЅР° СѓСѓ</span>
-            </div>
-          </div>
-        </div>
-        <button class="uts-btn" style="margin-top:14px;" id="confirm-btn" onclick="UTS.confirm()" disabled>Р‘Р°С‚Р°Р»РіР°Р°Р¶СѓСѓР»Р°С…</button>
-      </div>`;
-    }
-    return html;
   }
 
-  function wireSignaturePad(){
-    const canvas = document.getElementById('sig-canvas');
-    if(!canvas) return;
-    const ratio = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * ratio;
-    canvas.height = 150 * ratio;
-    sigCtx = canvas.getContext('2d');
-    sigCtx.scale(ratio, ratio);
-    sigCtx.lineWidth = 2.2;
-    sigCtx.lineCap = 'round';
-    sigCtx.strokeStyle = '#1E2421';
-    sigHas = false;
-
-    function pos(e){
-      const r = canvas.getBoundingClientRect();
-      const cx = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
-      const cy = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
-      return [cx, cy];
+  function entryView(){
+    const empOptions = STATE.employees.map(e=>`<option value="${escapeHtml(e.id)}" ${STATE.entryEmpId===e.id?'selected':''}>${escapeHtml(e.id)} — ${escapeHtml(e.name)}</option>`).join('');
+    let formHtml = '<div class="uts-empty">Ажилтан болон сараа сонгоно уу.</div>';
+    if(STATE.entryEmpId){
+      formHtml = `
+      <div class="uts-row" style="margin-top:6px;">
+        <div class="uts-field"><label>${monthNum(STATE.entryMonth)}-р сарын ажилласан хоног</label><input type="number" min="0" max="31" id="entry-workeddays"/></div>
+        <div class="uts-field"><label>Ээлжийн амралт (хоног)</label><input type="number" min="0" max="31" id="entry-restdays"/></div>
+        <button class="uts-btn" onclick="UTS.saveEntry()">Хадгалах</button>
+      </div>
+      <div class="uts-note" id="entry-status"></div>`;
     }
-    function start(e){ e.preventDefault(); sigDrawing=true; const [x,y]=pos(e); sigCtx.beginPath(); sigCtx.moveTo(x,y); }
-    function move(e){ if(!sigDrawing) return; e.preventDefault(); const [x,y]=pos(e); sigCtx.lineTo(x,y); sigCtx.stroke(); sigHas=true; updateConfirmEnabled(); }
-    function end(){ sigDrawing=false; }
-
-    canvas.addEventListener('mousedown', start);
-    canvas.addEventListener('mousemove', move);
-    window.addEventListener('mouseup', end);
-    canvas.addEventListener('touchstart', start, {passive:false});
-    canvas.addEventListener('touchmove', move, {passive:false});
-    canvas.addEventListener('touchend', end);
+    return `
+    <div class="uts-card">
+      <h3>Сарын мэдээлэл оруулах</h3>
+      <div class="uts-row">
+        <div class="uts-field"><label>Ажилтан</label>
+          <select id="entry-emp" onchange="UTS.pickEntryEmployee(this.value)">
+            <option value="">— сонгох —</option>${empOptions}
+          </select>
+        </div>
+        <div class="uts-field"><label>Сар</label>
+          <input type="month" value="${STATE.entryMonth}" onchange="UTS.changeEntryMonth(this.value)"/>
+        </div>
+      </div>
+      ${formHtml}
+    </div>`;
   }
-  function updateConfirmEnabled(){
-    const btn = document.getElementById('confirm-btn');
-    if(!btn) return;
-    btn.disabled = !(STATE.checked && sigHas);
+
+  function dashboardView(){
+    const data = STATE.dashData;
+    let body = '<div class="uts-empty">Уншиж байна...</div>';
+    if(data){
+      const recs = data.records || {};
+      let confirmedCount = 0;
+      const rows = STATE.employees.map(e=>{
+        const r = recs[e.id];
+        let status = '<span class="uts-badge empty">Орuулаагүй</span>';
+        let wd='—', rd='—', when='';
+        if(r){
+          wd = r.workedDays; rd = r.restDays;
+          if(r.confirmed){ confirmedCount++; status = '<span class="uts-badge ok">Баталгаажсан</span>'; when = fmtDate(r.confirmedAt); }
+          else status = '<span class="uts-badge pending">Хүлээгдэж буй</span>';
+        }
+        return `<tr>
+          <td class="uts-mono">${escapeHtml(e.id)}</td>
+          <td>${escapeHtml(e.name)}</td>
+          <td>${escapeHtml(e.position)}</td>
+          <td class="uts-mono">${wd}</td>
+          <td class="uts-mono">${rd}</td>
+          <td>${status}</td>
+          <td class="uts-mono" style="font-size:11px;color:var(--steel)">${when}</td>
+        </tr>`;
+      }).join('');
+      body = `
+      <div class="uts-summary-grid" style="grid-template-columns:repeat(3,1fr); max-width:420px;">
+        <div class="uts-stat"><div class="v">${STATE.employees.length}</div><div class="l">Нийт ажилтан</div></div>
+        <div class="uts-stat"><div class="v">${confirmedCount}</div><div class="l">Баталгаажсан</div></div>
+        <div class="uts-stat"><div class="v">${STATE.employees.length-confirmedCount}</div><div class="l">Үлдсэн</div></div>
+      </div>
+      <div class="uts-table-wrap"><table class="uts-table">
+        <thead><tr><th>Код</th><th>Нэр</th><th>Албан тушаал</th><th>Ажилласан хоног</th><th>Ээлжийн амралт</th><th>Төлөв</th><th>Огноо</th></tr></thead>
+        <tbody>${rows || '<tr><td colspan="7" style="text-align:center;color:var(--steel)">Ажилтан байхгүй</td></tr>'}</tbody>
+      </table></div>`;
+    }
+    return `
+    <div class="uts-card">
+      <h3>Хяналтын самбар</h3>
+      <div class="uts-row">
+        <div class="uts-field"><label>Сар</label><input type="month" value="${STATE.dashMonth}" onchange="UTS.changeDashMonth(this.value)"/></div>
+      </div>
+      ${body}
+    </div>`;
   }
 
   window.UTS = {
-    async lookup(){
-      const id = document.getElementById('portal-id').value.trim();
-      const month = document.getElementById('portal-month').value || currentMonthStr();
-      if(!id){ alert('РђР¶РёР»С‚РЅС‹ РєРѕРґРѕРѕ РѕСЂСѓСѓР»РЅР° СѓСѓ.'); return; }
-      STATE.id = id; STATE.month = month; STATE.checked = false;
-      const employees = await loadJSON('employees', []);
-      STATE.employee = employees.find(e=>e.id===id) || null;
+    setTab(tab){ STATE.tab = tab; STATE.editingId = null; render(); if(tab==='dashboard') UTS.loadDashboard(); },
+
+    async saveEmployee(){
+      const idInput = document.getElementById('emp-id');
+      const id = idInput.value.trim();
+      const name = document.getElementById('emp-name').value.trim();
+      const position = document.getElementById('emp-pos').value.trim();
+      const tenure = document.getElementById('emp-tenure').value.trim();
+      if(!id || !name){ alert('Код болон нэрийг бөглөнө үү.'); return; }
+      const existingIdx = STATE.employees.findIndex(e=>e.id===id);
+      if(STATE.editingId){
+        STATE.employees[existingIdx] = {id, name, position, tenure};
+      } else {
+        if(existingIdx>=0){ alert('Энэ код өмнө нь бүртгэгдсэн байна.'); return; }
+        STATE.employees.push({id, name, position, tenure});
+      }
+      await saveJSON('employees', STATE.employees);
       if(apiUrlEnabled()){
-        const remote = await apiCall('lookup', {month, id});
-        if(remote && remote.success){
-          STATE.employee = remote.employee || STATE.employee;
-          STATE.record = remote.record || null;
-        }
+        const remote = await apiCall('saveEmployee', {id, name, position, tenure});
+        if(remote && !remote.success){ console.warn('Remote saveEmployee failed'); }
       }
-      if(!STATE.record){
-        const data = await getMonthData(month);
-        STATE.record = data.records[id] || null;
-      }
-      STATE.looked = true;
+      STATE.editingId = null;
       render();
     },
-    toggleAck(checked){ STATE.checked = checked; updateConfirmEnabled(); },
-    clearSig(){
-      if(!sigCtx) return;
-      const canvas = document.getElementById('sig-canvas');
-      sigCtx.clearRect(0,0,canvas.width,canvas.height);
-      sigHas = false;
-      updateConfirmEnabled();
-    },
-    async confirm(){
-      const canvas = document.getElementById('sig-canvas');
-      if(!STATE.checked || !sigHas || !canvas) return;
-      const dataUrl = canvas.toDataURL('image/png');
-      let rec = null;
+    editEmployee(id){ STATE.editingId = id; render(); },
+    cancelEdit(){ STATE.editingId = null; render(); },
+
+    async removeEmployee(id){
+      if(!confirm(id+' ажилтныг устгах уу?')) return;
+      STATE.employees = STATE.employees.filter(e=>e.id!==id);
+      await saveJSON('employees', STATE.employees);
       if(apiUrlEnabled()){
-        const remote = await apiCall('confirm', {month: STATE.month, id: STATE.id, signature: dataUrl});
-        if(remote && remote.success){
-          rec = remote.record || {confirmed:true, confirmedAt: new Date().toISOString(), signature: dataUrl};
-        }
+        const remote = await apiCall('deleteEmployee', {id});
+        if(remote && !remote.success){ console.warn('Remote deleteEmployee failed'); }
       }
-      if(!rec){
-        const data = await getMonthData(STATE.month);
-        const existing = data.records[STATE.id];
-        if(!existing) return;
-        existing.confirmed = true;
-        existing.confirmedAt = new Date().toISOString();
-        existing.signature = dataUrl;
-        await saveJSON('month:'+STATE.month, data);
-        rec = existing;
+      render();
+    },
+
+    async seedDemo(){
+      const demo = [
+        {id:'EMP0001', name:'Ганхүү', position:'Дамп оператор', tenure:'8 сар'},
+        {id:'EMP0002', name:'Болд', position:'Уурхайчин', tenure:'2 жил'},
+      ];
+      demo.forEach(d=>{ if(!STATE.employees.some(e=>e.id===d.id)) STATE.employees.push(d); });
+      await saveJSON('employees', STATE.employees);
+      if(apiUrlEnabled()){
+        const remote = await apiCall('saveEmployees', {employees: STATE.employees});
+        if(remote && !remote.success){ console.warn('Remote saveEmployees failed'); }
       }
-      STATE.record = rec;
+      render();
+    },
+
+    async pickEntryEmployee(empId){
+      STATE.entryEmpId = empId;
+      render();
+      if(!empId) return;
+      const data = await getMonthData(STATE.entryMonth);
+      const rec = data.records[empId];
+      const wdInput = document.getElementById('entry-workeddays');
+      const rdInput = document.getElementById('entry-restdays');
+      if(rec && wdInput && rdInput){ wdInput.value = rec.workedDays; rdInput.value = rec.restDays; }
+      const statusEl = document.getElementById('entry-status');
+      if(statusEl) statusEl.textContent = rec && rec.confirmed ? 'Энэ ажилтан энэ сарын мэдээллээ аль хэдийн баталгаажуулсан. Дахин хадгалбал баталгаажуулалт цуцлагдана.' : '';
+    },
+
+    changeEntryMonth(month){ STATE.entryMonth = month; if(STATE.entryEmpId) UTS.pickEntryEmployee(STATE.entryEmpId); else render(); },
+
+    async saveEntry(){
+      const workedDays = Number(document.getElementById('entry-workeddays').value)||0;
+      const restDays = Number(document.getElementById('entry-restdays').value)||0;
+      const data = await getMonthData(STATE.entryMonth);
+      const existing = data.records[STATE.entryEmpId];
+      if(existing && existing.confirmed){
+        if(!confirm('Энэ ажилтан энэ сарын мэдээллээ аль хэдийн баталгаажуулсан байна. Дахин хадгалбал баталгаажуулалт цуцлагдана. Үргэлжлүүлэх үү?')) return;
+      }
+      const entry = {workedDays, restDays, confirmed:false, confirmedAt:null, signature:null};
+      let savedRemotely = false;
+      if(apiUrlEnabled()){
+        const remote = await apiCall('saveEntry', {month: STATE.entryMonth, id: STATE.entryEmpId, workedDays, restDays});
+        savedRemotely = !!(remote && remote.success);
+        if(!savedRemotely) console.warn('Remote saveEntry failed');
+      }
+      if(!savedRemotely){
+        data.records[STATE.entryEmpId] = entry;
+        await saveJSON('month:'+STATE.entryMonth, data);
+      }
+      alert('Хадгаллаа.');
+      UTS.pickEntryEmployee(STATE.entryEmpId);
+    },
+
+    changeDashMonth(month){ STATE.dashMonth = month; UTS.loadDashboard(); },
+    async loadDashboard(){
+      STATE.dashData = null; render();
+      STATE.dashData = await getMonthData(STATE.dashMonth);
       render();
     },
   };
 
-  render();
+  init();
 })();
 </script>
