@@ -146,8 +146,24 @@
   }
 
   async function getMonthData(monthStr){
-    return await loadJSON('month:'+monthStr, {records:{}});
+
+  if(apiUrlEnabled()){
+    const remote = await apiCall('loadMonth',{
+      month:monthStr
+    });
+
+    if(remote && remote.success){
+      return {
+        records: remote.records || {}
+      };
+    }
   }
+
+  return await loadJSON(
+    'month:'+monthStr,
+    {records:{}}
+  );
+}
 
   function logoMark(){
     return '<div class="uts-mark"><div style="background:var(--safety)"></div><div style="background:var(--dusk)"></div><div style="background:var(--steel)"></div></div>';
@@ -309,19 +325,16 @@
       if(apiUrlEnabled()){
         const remote = await apiCall('confirm', {month: STATE.month, id: STATE.id, signature: dataUrl});
         if(remote && remote.success){
-          rec = remote.record || {confirmed:true, confirmedAt: new Date().toISOString(), signature: dataUrl};
+         rec = remote.record;
         }
       }
       if(!rec){
-        const data = await getMonthData(STATE.month);
-        const existing = data.records[STATE.id];
-        if(!existing) return;
-        existing.confirmed = true;
-        existing.confirmedAt = new Date().toISOString();
-        existing.signature = dataUrl;
-        await saveJSON('month:'+STATE.month, data);
-        rec = existing;
-      }
+
+    alert("Сервертэй холбогдож чадсангүй.");
+
+    return;
+
+}
       STATE.record = rec;
       render();
     },
