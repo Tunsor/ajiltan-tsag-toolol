@@ -318,26 +318,23 @@
       updateConfirmEnabled();
     },
     async confirm(){
-  const canvas = document.getElementById('sig-canvas');
-  if(!STATE.checked || !sigHas || !canvas) return;
-  const dataUrl = canvas.toDataURL('image/png');
-  let rec = null;
-  let errMsg = '';
-  if(apiUrlEnabled()){
-    const remote = await apiCall('confirm', {month: STATE.month, id: STATE.id, signature: dataUrl});
-    if(remote && remote.success){
-      rec = remote.record;
-    } else if(remote && remote.error){
-      errMsg = remote.error;
-    }
-  }
-  if(!rec){
-    alert(errMsg ? ('Алдаа: ' + errMsg) : 'Сервертэй холбогдож чадсангүй. (Сүлжээ эсвэл Apps Script тохиргоог шалгана уу.)');
-    return;
-  }
-  STATE.record = rec;
-  render();
-},
+      const canvas = document.getElementById('sig-canvas');
+      if(!STATE.checked || !sigHas || !canvas) return;
+      const dataUrl = canvas.toDataURL('image/png');
+      let rec = null;
+      let errMsg = '';
+      if(apiUrlEnabled()){
+        const remote = await apiCall('confirm', {month: STATE.month, id: STATE.id, signature: dataUrl});
+        if(remote && remote.success){
+          rec = remote.record;
+        } else if(remote && remote.error){
+          errMsg = remote.error;
+        }
+      }
+      if(!rec){
+        alert(errMsg ? ('Алдаа: ' + errMsg) : 'Сервертэй холбогдож чадсангүй. (Сүлжээ эсвэл Apps Script тохиргоог шалгана уу.)');
+        return;
+      }
       STATE.record = rec;
       render();
     },
@@ -345,7 +342,6 @@
 
   render();
 })();
-</script>
 </script>
 
 </body>
